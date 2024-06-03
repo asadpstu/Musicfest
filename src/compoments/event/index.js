@@ -1,7 +1,9 @@
-import { View, Text, StyleSheet, FlatList, TouchableOpacity, Image } from 'react-native';
 import React, { useState } from 'react';
+import { View, Text, StyleSheet, FlatList, TouchableOpacity, Image } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
-export default function EventComponent() {
+const EventComponent = () =>{
+    const navigation = useNavigation();
     const images = [
         require('../../../assets/face/1.jpg'),
         require('../../../assets/face/1.jpg'),
@@ -41,9 +43,12 @@ export default function EventComponent() {
                             }}
                         />
                     </View>
-                    <Text style={styles.peopleGoingLabel}>
-                        20,000+ going 
-                    </Text>
+                    <TouchableOpacity onPress={()=>{navigation.navigate('Invite')}}>
+                        <Text style={styles.peopleGoingLabel}>
+                            20,000+ going
+                        </Text>    
+                    </TouchableOpacity>
+                    
                 </View>
 
             </View>
@@ -106,3 +111,5 @@ const styles = StyleSheet.create({
         borderRadius: 50,
     },
 });
+
+export default EventComponent;
